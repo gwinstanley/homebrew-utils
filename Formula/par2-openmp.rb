@@ -7,7 +7,7 @@ class Par2Openmp < Formula
   conflicts_with "par2", :because => "both install the same binaries"
   option "without-libomp", "Compile without OpenMP support"
   depends_on "libomp" => :recommended
-  depends_on :macos => :yosemite
+  depends_on :macos => :catalina
 
   def install
     conf_args = ["--prefix=#{prefix}"]
