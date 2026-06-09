@@ -2,11 +2,12 @@ cask 'displaycal' do
 
   appname = 'DisplayCAL'
   arch arm: 'arm64', intel: 'x86_64'
-  version '3.9.16'
-  sha256 arm:   'b83f5ffd66e67f09db4d57bfe4507072e3fc4bea24974f4729fcafe6e504fdd7',
-         intel: '50d5a6eb6fb1fd5b8adedb74dd73dbee73fd5ea53204046e993e87c2d000d099'
+  classifier = on_arch_conditional arm: 'arm64', intel: 'x86'
+  version '3.9.17'
+  sha256 arm:   'ca39277dc3d452edfe0badfe2cd56b781a1155a5f24affffa679777c862209e4',
+         intel: '06065f858d3aa95f3b62c555027fae6a0ddb7912b7aeebbd41063c972f9dc34e'
 
-  url "https://github.com/eoyilmaz/displaycal-py3/releases/download/#{version}/#{appname}-#{version}-macOS-#{arch}.dmg"
+  url "https://github.com/eoyilmaz/displaycal-py3/releases/download/#{version}/#{appname}-#{version}-macOS-#{classifier}.dmg"
   name 'DisplayCAL'
   desc 'Display Calibration and Characterization powered by ArgyllCMS'
   homepage 'https://github.com/eoyilmaz/displaycal-py3'
