@@ -10,7 +10,7 @@ cask 'dcptool' do
   desc "#{appname}: tool for editing DNG camera profiles (DCP files)"
   homepage "https://dcptool.sourceforge.net/"
 
-  depends_on macos: '>= :catalina'
+  depends_on macos: :catalina
 
   binary "#{appname}"
 
