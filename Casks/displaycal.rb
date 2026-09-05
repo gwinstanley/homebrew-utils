@@ -14,7 +14,7 @@ cask 'displaycal' do
 
   app "#{appname}.app"
 
-  depends_on macos: :big_sur
+  depends_on :macos
   depends_on formula: 'glib'
   depends_on formula: 'gtk+3'
   depends_on formula: 'python@3.13'
