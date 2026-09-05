@@ -3,9 +3,9 @@ cask 'displaycal' do
   appname = 'DisplayCAL'
   arch arm: 'arm64', intel: 'x86_64'
   classifier = on_arch_conditional arm: 'arm64', intel: 'x86'
-  version '3.9.17'
-  sha256 arm:   'ca39277dc3d452edfe0badfe2cd56b781a1155a5f24affffa679777c862209e4',
-         intel: '06065f858d3aa95f3b62c555027fae6a0ddb7912b7aeebbd41063c972f9dc34e'
+  version '3.9.19'
+  sha256 arm:   'e2a9e075e9ed30aafe6612d11578d217e3e80489fd6d50459406c112a3d7db19',
+         intel: 'dc0ca1107c5cd8c3dc67562445a642057716550a582430f17609ce2f80d2d50b'
 
   url "https://github.com/eoyilmaz/displaycal-py3/releases/download/#{version}/#{appname}-#{version}-macOS-#{classifier}.dmg"
   name 'DisplayCAL'
@@ -17,7 +17,7 @@ cask 'displaycal' do
   depends_on :macos
   depends_on formula: 'glib'
   depends_on formula: 'gtk+3'
-  depends_on formula: 'python@3.13'
+  depends_on formula: 'python@3.14'
 
   zap trash: [
         "~/Library/Application Support/#{appname}",
