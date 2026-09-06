@@ -12,17 +12,23 @@ cask 'dcptool' do
 
   depends_on :macos
 
-  binary "#{appname}"
-
-  preflight do
-    require 'fileutils'
-    FileUtils.mv("#{staged_path}/#{zipname}/Binaries/macOS/#{appname}", "#{staged_path}/")
-    FileUtils.mv("#{staged_path}/#{zipname}/Documentation", "#{staged_path}/")
-    FileUtils.mv("#{staged_path}/#{zipname}/Documentation.html", "#{staged_path}/")
-    FileUtils.mv("#{staged_path}/#{zipname}/gpl.txt", "#{staged_path}/")
-    FileUtils.mv("#{staged_path}/#{zipname}/ReadMe.txt", "#{staged_path}/")
-    FileUtils.mv("#{staged_path}/#{zipname}/Release.txt", "#{staged_path}/")
-    FileUtils.rm_rf("#{staged_path}/#{zipname}")
+  preflight_steps do
+    move_contents "#{zipname}", "."
+    remove "#{zipname}", recursive: true
+    remove "Binaries/Windows", recursive: true
+    remove "#{appname}.xcodeproj", recursive: true
+    remove "#{appname}.*"
+    remove "dng_sdk", recursive: true
+    remove "iconv", recursive: true
+    remove "libxml2", recursive: true
+    remove "XMPStub", recursive: true
+    remove "*.cpp"
+    remove "*.h"
+    set_permissions "Binaries/macOS/#{appname}", "0755"
   end
+
+  binary "Binaries/macOS/#{appname}"
+
+  caveats "To bypass macOS quarantine for the binary:\nxattr -r -d com.apple.quarantine \"#{caskroom_path}/#{version}/Binaries/macOS/#{appname}\""
 
 end
